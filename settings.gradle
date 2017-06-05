@@ -1,0 +1,4 @@
+include ':app', ':library'
+
+//include ':android-numberpickercompat'
+//project(':android-numberpickercompat').projectDir = new File(rootDir, 'android-numberpickercompat/library')
