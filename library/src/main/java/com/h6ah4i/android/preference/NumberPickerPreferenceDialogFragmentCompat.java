@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.preference.PreferenceDialogFragmentCompat;
 import android.view.View;
+import android.widget.TextView;
 
 import com.h6ah4i.android.preference.numberpickercompat.R;
 import com.h6ah4i.android.widget.numberpickercompat.NumberPicker;
@@ -27,6 +28,7 @@ public class NumberPickerPreferenceDialogFragmentCompat extends PreferenceDialog
 
     private static final String SAVE_STATE_VALUE = "NumberPickerPreferenceDialogFragmentCompat.value";
     private NumberPicker mNumberPicker;
+    private TextView mUnitTextView;
     private int mValue;
 
     public static NumberPickerPreferenceDialogFragmentCompat newInstance(String key) {
@@ -58,6 +60,7 @@ public class NumberPickerPreferenceDialogFragmentCompat extends PreferenceDialog
         super.onBindDialogView(view);
 
         mNumberPicker = view.findViewById(R.id.nppc_number_picker);
+        mUnitTextView = view.findViewById(R.id.nppc_unit_text);
 
         if (mNumberPicker == null) {
             throw new IllegalStateException("Dialog view must contain an NumberPicker with id" +
@@ -67,6 +70,11 @@ public class NumberPickerPreferenceDialogFragmentCompat extends PreferenceDialog
         mNumberPicker.setMinValue(getNumberPickerPreference().getMinValue());
         mNumberPicker.setMaxValue(getNumberPickerPreference().getMaxValue());
         mNumberPicker.setValue(mValue);
+
+        final String unitText = getNumberPickerPreference().getUnitText();
+        if (unitText != null) {
+            mUnitTextView.setText(unitText);
+        }
     }
 
     @Override

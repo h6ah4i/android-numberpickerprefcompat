@@ -28,6 +28,7 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
     private int mValue = 0;
     private int mMaxValue = 0;
     private int mMinValue = 0;
+    private String mUnitText = null;
 
     public NumberPickerPreferenceCompat(Context context) {
         super(context);
@@ -55,6 +56,7 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
 
         mMinValue = ta.getInt(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_minValue, mMinValue);
         mMaxValue = ta.getInt(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_maxValue, mMaxValue);
+        mUnitText = ta.getString(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_unitText);
 
         ta.recycle();
 
@@ -102,6 +104,12 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
 
     public void setMaxValue(int maxValue) {
         mMaxValue = maxValue;
+    }
+
+    public String getUnitText() { return mUnitText; };
+
+    public void setUnitText(String unitText) {
+        mUnitText = unitText;
     }
 
     @Override

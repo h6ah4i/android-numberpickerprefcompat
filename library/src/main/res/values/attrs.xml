@@ -18,5 +18,6 @@
     <declare-styleable name="nppc_NumberPickerPreferenceCompat">
         <attr name="nppc_minValue" format="integer"/>
         <attr name="nppc_maxValue" format="integer"/>
+        <attr name="nppc_unitText" format="string|reference" />
     </declare-styleable>
 </resources>
