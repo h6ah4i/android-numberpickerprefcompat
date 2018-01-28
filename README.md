@@ -23,7 +23,7 @@ Target platforms
 Latest version
 ---
 
-- Version 0.1.0  (June 7, 2017)   ([RELEASE NOTES](./RELEASE-NOTES.md))
+- Version 0.2.0  (January 28, 2018)   ([RELEASE NOTES](./RELEASE-NOTES.md))
 
 Getting started
 ---
@@ -32,7 +32,7 @@ This library is published on jCenter. Just add these lines to `build.gradle`.
 
 ```gradle
 dependencies {
-    compile 'com.h6ah4i.android.preference:numberpickerprefcompat:0.1.0'
+    compile 'com.h6ah4i.android.preference:numberpickerprefcompat:0.2.0'
 }
 ```
 
@@ -53,6 +53,7 @@ Usage
         android:title="Number picker preference"
         app:nppc_maxValue="100"
         app:nppc_minValue="0"
+        app:nppc_unitText="%"
         />
 
 </PreferenceScreen>

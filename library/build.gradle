@@ -2,8 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
 ext {
-    libraryVersionCode = 1
-    libraryVersionName = "0.1.0"
+    libraryVersionCode = 2
+    libraryVersionName = "0.2.0"
 }
 
 android {
