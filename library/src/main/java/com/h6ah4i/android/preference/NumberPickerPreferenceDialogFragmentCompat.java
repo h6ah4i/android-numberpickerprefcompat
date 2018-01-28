@@ -57,7 +57,7 @@ public class NumberPickerPreferenceDialogFragmentCompat extends PreferenceDialog
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
 
-        mNumberPicker = (NumberPicker) view.findViewById(R.id.nppc_number_picker);
+        mNumberPicker = view.findViewById(R.id.nppc_number_picker);
 
         if (mNumberPicker == null) {
             throw new IllegalStateException("Dialog view must contain an NumberPicker with id" +

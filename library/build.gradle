@@ -7,15 +7,15 @@ ext {
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.2"
 
     resourcePrefix "nppc_"
 
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 25
+        minSdkVersion 14
+        targetSdkVersion 27
         versionCode libraryVersionCode
         versionName libraryVersionName
 
@@ -31,16 +31,16 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:preference-v7:25.3.1'
-    compile 'com.h6ah4i.android.widget:numberpickercompat:0.1.0'
-//    compile project(':android-numberpickercompat')
-    testCompile 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:preference-v7:27.0.2'
+    implementation 'com.h6ah4i.android.widget:numberpickercompat:0.2.0'
+//    implementation project(':android-numberpickercompat')
+    testImplementation 'junit:junit:4.12'
 }
 
 publish {
@@ -49,6 +49,6 @@ publish {
     artifactId = 'numberpickerprefcompat'
     uploadName = 'android-numberpickerprefcompat'
     publishVersion = libraryVersionName
-    desc = 'An Preference wiget with NumberPicker dialog. Works on API level 9+ devices.'
+    desc = 'A Material Design Preference widget with NumberPicker dialog. Works on API level 14+ devices.'
     website = 'https://github.com/h6ah4i/android-numberpickerprefcompat'
 }
