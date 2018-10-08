@@ -19,7 +19,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v7.preference.DialogPreference;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.preference.DialogPreference;
 import android.util.AttributeSet;
 
 import com.h6ah4i.android.preference.numberpickercompat.R;
@@ -106,20 +109,22 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
         mMaxValue = maxValue;
     }
 
+    @Nullable
     public String getUnitText() { return mUnitText; };
 
-    public void setUnitText(String unitText) {
+    public void setUnitText(@Nullable String unitText) {
         mUnitText = unitText;
     }
 
+    @NonNull
     @Override
     protected Object onGetDefaultValue(TypedArray a, int index) {
         return a.getInt(index, 0);
     }
 
     @Override
-    protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
-        setValue(restoreValue ? getPersistedInt(mValue) : (Integer) defaultValue);
+    protected void onSetInitialValue(Object defaultValue) {
+        setValue(getPersistedInt((defaultValue != null) ? (Integer) defaultValue : 0));
     }
 
     @Override

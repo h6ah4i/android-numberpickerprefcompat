@@ -16,8 +16,9 @@
 package com.h6ah4i.android.preference;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.preference.PreferenceDialogFragmentCompat;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.preference.PreferenceDialogFragmentCompat;
 import android.view.View;
 import android.widget.TextView;
 
@@ -31,7 +32,8 @@ public class NumberPickerPreferenceDialogFragmentCompat extends PreferenceDialog
     private TextView mUnitTextView;
     private int mValue;
 
-    public static NumberPickerPreferenceDialogFragmentCompat newInstance(String key) {
+    @NonNull
+    public static NumberPickerPreferenceDialogFragmentCompat newInstance(@NonNull String key) {
         final NumberPickerPreferenceDialogFragmentCompat fragment = new NumberPickerPreferenceDialogFragmentCompat();
         final Bundle args = new Bundle(1);
         args.putString(ARG_KEY, key);
@@ -40,7 +42,7 @@ public class NumberPickerPreferenceDialogFragmentCompat extends PreferenceDialog
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
             mValue = getNumberPickerPreference().getValue();
@@ -56,7 +58,7 @@ public class NumberPickerPreferenceDialogFragmentCompat extends PreferenceDialog
     }
 
     @Override
-    protected void onBindDialogView(View view) {
+    protected void onBindDialogView(@NonNull View view) {
         super.onBindDialogView(view);
 
         mNumberPicker = view.findViewById(R.id.nppc_number_picker);

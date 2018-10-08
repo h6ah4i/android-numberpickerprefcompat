@@ -1,10 +1,10 @@
 package com.h6ah4i.android.example.numberpickerpreferencecompat;
 
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
+import androidx.fragment.app.DialogFragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.h6ah4i.android.preference.NumberPickerPreferenceCompat;
 import com.h6ah4i.android.preference.NumberPickerPreferenceDialogFragmentCompat;
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static class MyPreferenceFragment extends PreferenceFragmentCompat {
         private static final String DIALOG_FRAGMENT_TAG =
-                "android.support.v7.preference.PreferenceFragment.DIALOG";
+                "androidx.preference.PreferenceFragment.DIALOG";
 
         public MyPreferenceFragment() {
         }
