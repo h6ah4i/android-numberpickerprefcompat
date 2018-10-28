@@ -23,7 +23,7 @@ Target platforms
 Latest version
 ---
 
-- Version 0.2.0  (January 28, 2018)   ([RELEASE NOTES](./RELEASE-NOTES.md))
+- Version 1.0.0  (October 29, 2018)   ([RELEASE NOTES](./RELEASE-NOTES.md))
 
 Getting started
 ---
@@ -32,7 +32,7 @@ This library is published on jCenter. Just add these lines to `build.gradle`.
 
 ```gradle
 dependencies {
-    compile 'com.h6ah4i.android.preference:numberpickerprefcompat:0.2.0'
+    compile 'com.h6ah4i.android.preference:numberpickerprefcompat:1.0.0'
 }
 ```
 
@@ -63,7 +63,7 @@ Usage
 ```java
 public class MyPreferenceFragment extends PreferenceFragmentCompat {
     private static final String DIALOG_FRAGMENT_TAG =
-            "android.support.v7.preference.PreferenceFragment.DIALOG";
+            "androidx.preference.PreferenceFragment.DIALOG";
 
     public MyPreferenceFragment() {
     }

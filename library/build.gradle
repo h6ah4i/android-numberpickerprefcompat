@@ -2,8 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'guru.stefma.bintrayrelease'
 
 ext {
-    libraryVersionCode = 2
-    libraryVersionName = "0.2.0"
+    libraryVersionCode = 3
+    libraryVersionName = "1.0.0"
 }
 
 android {

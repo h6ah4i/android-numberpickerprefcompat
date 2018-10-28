@@ -1,3 +1,6 @@
+## 1.0.0
+- Migrate to AndroidX
+
 ## 0.2.0
 - Dropped API level v13 or lower support
 - Added nppc_unitText attribute
