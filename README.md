@@ -32,7 +32,7 @@ This library is published on jCenter. Just add these lines to `build.gradle`.
 
 ```gradle
 dependencies {
-    compile 'com.h6ah4i.android.preference:numberpickerprefcompat:1.0.0'
+    implementation 'com.h6ah4i.android.preference:numberpickerprefcompat:1.0.0'
 }
 ```
 
