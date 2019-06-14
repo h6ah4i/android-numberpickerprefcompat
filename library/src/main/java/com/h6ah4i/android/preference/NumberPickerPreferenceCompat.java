@@ -32,6 +32,7 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
     private int mMaxValue = 0;
     private int mMinValue = 0;
     private String mUnitText = null;
+    private boolean mWrapSelectorWheel = true;
 
     public NumberPickerPreferenceCompat(Context context) {
         super(context);
@@ -60,6 +61,7 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
         mMinValue = ta.getInt(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_minValue, mMinValue);
         mMaxValue = ta.getInt(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_maxValue, mMaxValue);
         mUnitText = ta.getString(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_unitText);
+        mWrapSelectorWheel = ta.getBoolean(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_wrapSelectorWheel, true);
 
         ta.recycle();
 
@@ -107,6 +109,14 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
 
     public void setMaxValue(int maxValue) {
         mMaxValue = maxValue;
+    }
+
+    public boolean getWrapSelectorWheel() {
+        return mWrapSelectorWheel;
+    }
+
+    public void setWrapSelectorWheel(boolean wrapSelectorWheel) {
+        mWrapSelectorWheel = wrapSelectorWheel;
     }
 
     @Nullable
