@@ -3,7 +3,7 @@ NumberPickerPreferenceCompat
 
 An Android's Preference widget which can pick a number using NumberPicker dialog. This library uses a [ported version of NumberPicker widget](https://github.com/h6ah4i/android-numberpickercompat) and [support library's Preference](https://developer.android.com/reference/android/support/v7/preference/Preference.html) class, so it works perfectly on API level 9+.
 
-[ ![Download](https://api.bintray.com/packages/h6ah4i/maven/android-numberpickerprefcompat/images/download.svg) ](https://bintray.com/h6ah4i/maven/android-numberpickerprefcompat/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.h6ah4i.android.preference/numberpickerprefcompat/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.h6ah4i.android.preference/numberpickerprefcompat)
 
 ---
 
@@ -28,7 +28,7 @@ Latest version
 Getting started
 ---
 
-This library is published on jCenter. Just add these lines to `build.gradle`.
+This library is published on Maven Central. Just add these lines to `build.gradle`.
 
 ```gradle
 dependencies {
