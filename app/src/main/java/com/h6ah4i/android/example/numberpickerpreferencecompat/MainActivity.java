@@ -31,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             addPreferencesFromResource(R.xml.preferences);
+            findPreference("number_picker_preference_1").setSummaryProvider(new Preference.SummaryProvider() {
+                @Override
+                public CharSequence provideSummary(Preference preference) {
+                    NumberPickerPreferenceCompat numPickerPreference = (NumberPickerPreferenceCompat) preference;
+                    return "Summary text goes here (value = " + numPickerPreference.getValue() + " " + numPickerPreference.getUnitText() + ")";
+                }
+            });
         }
 
         @Override

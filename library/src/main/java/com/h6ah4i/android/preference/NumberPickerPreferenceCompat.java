@@ -74,11 +74,15 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
      * @param value The value to save
      */
     public void setValue(int value) {
+        if (mValue == value) return;
+
         final boolean wasBlocking = shouldDisableDependents();
 
         mValue = value;
 
         persistInt(value);
+
+        notifyChanged();
 
         final boolean isBlocking = shouldDisableDependents();
         if (isBlocking != wasBlocking) {
