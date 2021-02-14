@@ -1,5 +1,8 @@
-apply plugin: 'com.android.library'
-apply plugin: 'guru.stefma.bintrayrelease'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+    id 'signing'
+}
 
 ext {
     libraryVersionCode = 3
@@ -42,12 +45,68 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-group = 'com.h6ah4i.android.preference'
-version = libraryVersionName
-publish {
-    userOrg = 'h6ah4i'
-    artifactId = 'numberpickerprefcompat'
-    uploadName = 'android-numberpickerprefcompat'
-    desc = 'A Material Design Preference widget with NumberPicker dialog. Works on API level 14+ devices.'
-    website = 'https://github.com/h6ah4i/android-numberpickerprefcompat'
+afterEvaluate {
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                groupId = 'com.h6ah4i.android.preference'
+                artifactId = 'numberpickerprefcompat'
+                version = libraryVersionName
+
+                from components.all
+
+                pom {
+                    name = 'NumberPickerPreferenceCompat'
+                    description = 'A Preference widget with NumberPicker dialog. Works on API level 14+ devices.'
+                    url = 'https://github.com/h6ah4i/android-numberpickerprefcompat'
+                    packaging = 'aar'
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                            distribution = 'repo'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'h6ah4i'
+                            name = 'Haruki Hasegawa'
+                        }
+                    }
+                    scm {
+                        connection = 'git:https://github.com/h6ah4i/android-numberpickerprefcompat.git'
+                        developerConnection = 'git:git@github.com:h6ah4i/android-numberpickerprefcompat.git'
+                        url = 'https://github.com/h6ah4i/android-numberpickerprefcompat'
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                name = 'BuildDir'
+
+                def releasesRepoUrl = "$buildDir/repos/releases"
+                def snapshotsRepoUrl = "$buildDir/repos/snapshots"
+                url = libraryVersionName.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            }
+
+            maven {
+                name = 'MavenCentral'
+
+                def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+                def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+                url = libraryVersionName.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+                credentials {
+                    username = "${project.SONATYPE_NEXUS_USERNAME}"
+                    password = "${project.SONATYPE_NEXUS_PASSWORD}"
+                }
+            }
+        }
+    }
+
+    signing {
+        useGpgCmd()
+        sign publishing.publications.mavenJava
+    }
 }
+
