@@ -35,8 +35,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.preference:preference:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.preference:preference:1.1.1'
     implementation 'com.h6ah4i.android.widget:numberpickercompat:1.0.0'
 //    implementation project(':android-numberpickercompat')
     testImplementation 'junit:junit:4.12'
