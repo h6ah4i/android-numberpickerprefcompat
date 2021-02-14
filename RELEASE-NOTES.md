@@ -1,3 +1,7 @@
+## 1.1.0
+- Add `nppc_wrapSelectorWheel` attribute (PR #2)
+- Bump to AndroidX preference v1.1.1 and support setSummaryProvider()
+
 ## 1.0.0
 - Migrate to AndroidX
 
