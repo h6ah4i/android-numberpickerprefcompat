@@ -17,13 +17,13 @@ Screenshot
 Target platforms
 ---
 
-- API level 9 or later
+- API level 14 or later
 
 
 Latest version
 ---
 
-- Version 1.0.0  (October 29, 2018)   ([RELEASE NOTES](./RELEASE-NOTES.md))
+- Version 1.1.0  (February 13, 2021)   ([RELEASE NOTES](./RELEASE-NOTES.md))
 
 Getting started
 ---
@@ -32,7 +32,7 @@ This library is published on Maven Central. Just add these lines to `build.gradl
 
 ```gradle
 dependencies {
-    implementation 'com.h6ah4i.android.preference:numberpickerprefcompat:1.0.0'
+    implementation 'com.h6ah4i.android.preference:numberpickerprefcompat:1.1.0'
 }
 ```
 
