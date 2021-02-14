@@ -73,6 +73,8 @@ public class NumberPickerPreferenceDialogFragmentCompat extends PreferenceDialog
         mNumberPicker.setMaxValue(getNumberPickerPreference().getMaxValue());
         mNumberPicker.setValue(mValue);
 
+        mNumberPicker.setWrapSelectorWheel(getNumberPickerPreference().getWrapSelectorWheel());
+
         final String unitText = getNumberPickerPreference().getUnitText();
         if (unitText != null) {
             mUnitTextView.setText(unitText);

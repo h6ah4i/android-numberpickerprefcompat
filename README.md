@@ -54,6 +54,7 @@ Usage
         app:nppc_maxValue="100"
         app:nppc_minValue="0"
         app:nppc_unitText="%"
+        app:nppc_wrapSelectorWheel="false"
         />
 
 </PreferenceScreen>
