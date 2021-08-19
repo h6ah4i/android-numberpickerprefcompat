@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="nppc_number_picker_entries">
+    <string-array name="number_picker_entries">
         <item>I</item>
         <item>II</item>
         <item>III</item>
