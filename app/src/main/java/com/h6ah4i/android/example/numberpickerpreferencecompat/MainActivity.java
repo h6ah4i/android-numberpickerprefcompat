@@ -25,39 +25,34 @@ public class MainActivity extends AppCompatActivity {
         private static final String DIALOG_FRAGMENT_TAG =
                 "androidx.preference.PreferenceFragment.DIALOG";
 
-        public MyPreferenceFragment() {
-        }
-
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             addPreferencesFromResource(R.xml.preferences);
-            findPreference("number_picker_preference_1").setSummaryProvider(new Preference.SummaryProvider() {
-                @Override
-                public CharSequence provideSummary(Preference preference) {
-                    NumberPickerPreferenceCompat numPickerPreference = (NumberPickerPreferenceCompat) preference;
-                    return "Summary text goes here (value = " + numPickerPreference.getValue() + " " + numPickerPreference.getUnitText() + ")";
-                }
-            });
+            NumberPickerPreferenceCompat preference = findPreference("number_picker_preference_1");
+            if (preference != null) {
+                // Do this to set the entries programmatically
+                // preference.setEntries(new String[] {"I", "II", "III", "IV", "V"});
+                preference.setSummaryProvider(new Preference.SummaryProvider<NumberPickerPreferenceCompat>() {
+                    @Override
+                    public CharSequence provideSummary(NumberPickerPreferenceCompat preference) {
+                        return "Summary text goes here (value = " + preference.getValue() + " " + preference.getUnitText() + ")";
+                    }
+                });
+            }
         }
 
         @Override
         public void onDisplayPreferenceDialog(Preference preference) {
             // check if dialog is already showing
-            if (getFragmentManager().findFragmentByTag(DIALOG_FRAGMENT_TAG) != null) {
+            if (getParentFragmentManager().findFragmentByTag(DIALOG_FRAGMENT_TAG) != null) {
                 return;
             }
 
-            final DialogFragment f;
-
-            if (preference instanceof NumberPickerPreferenceCompat) {
-                f = NumberPickerPreferenceDialogFragmentCompat.newInstance(preference.getKey());
-            } else {
-                f = null;
-            }
+            final DialogFragment f = preference instanceof NumberPickerPreferenceCompat ? NumberPickerPreferenceDialogFragmentCompat.newInstance(preference.getKey()) : null;
 
             if (f != null) {
                 f.setTargetFragment(this, 0);
-                f.show(getFragmentManager(), DIALOG_FRAGMENT_TAG);
+                f.show(getParentFragmentManager(), DIALOG_FRAGMENT_TAG);
             } else {
                 super.onDisplayPreferenceDialog(preference);
             }

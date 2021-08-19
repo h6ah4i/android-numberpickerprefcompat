@@ -19,11 +19,11 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.DialogPreference;
-import android.util.AttributeSet;
 
 import com.h6ah4i.android.preference.numberpickercompat.R;
 
@@ -33,6 +33,7 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
     private int mMinValue = 0;
     private String mUnitText = null;
     private boolean mWrapSelectorWheel = true;
+    private String[] mEntries = null;
 
     public NumberPickerPreferenceCompat(Context context) {
         super(context);
@@ -62,6 +63,12 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
         mMaxValue = ta.getInt(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_maxValue, mMaxValue);
         mUnitText = ta.getString(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_unitText);
         mWrapSelectorWheel = ta.getBoolean(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_wrapSelectorWheel, true);
+        CharSequence[] entries = ta.getTextArray(R.styleable.nppc_NumberPickerPreferenceCompat_android_entries);
+        if (entries != null) {
+            // Convert CharSequence[] to String[]
+            mEntries = new String[entries.length];
+            for (int i = 0; i < entries.length; i++) mEntries[i] = entries[i].toString();
+        }
 
         ta.recycle();
 
@@ -121,6 +128,15 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
 
     public void setWrapSelectorWheel(boolean wrapSelectorWheel) {
         mWrapSelectorWheel = wrapSelectorWheel;
+    }
+
+    @Nullable
+    public String[] getEntries() {
+        return mEntries;
+    }
+
+    public void setEntries(@Nullable String[] entries) {
+        mEntries = entries;
     }
 
     @Nullable

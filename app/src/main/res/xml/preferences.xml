@@ -8,9 +8,9 @@
         android:key="number_picker_preference_1"
         android:summary="Summary text goes here"
         android:title="Number picker preference"
-        app:nppc_maxValue="100"
-        app:nppc_minValue="0"
-        app:nppc_unitText="[%]"
-        />
+        app:nppc_minValue="1"
+        app:nppc_maxValue="5"
+        app:nppc_unitText="[cm]"
+        android:entries="@array/nppc_number_picker_entries" />
 
 </PreferenceScreen>
