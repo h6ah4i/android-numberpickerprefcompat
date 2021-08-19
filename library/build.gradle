@@ -97,8 +97,8 @@ afterEvaluate {
                 def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
                 url = libraryVersionName.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
                 credentials {
-                    /*username = "${project.SONATYPE_NEXUS_USERNAME}"
-                    password = "${project.SONATYPE_NEXUS_PASSWORD}"*/
+                    username = "${project.SONATYPE_NEXUS_USERNAME}"
+                    password = "${project.SONATYPE_NEXUS_PASSWORD}"
                 }
             }
         }
