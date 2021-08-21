@@ -20,5 +20,6 @@
         <attr name="nppc_maxValue" format="integer"/>
         <attr name="nppc_unitText" format="string|reference" />
         <attr name="nppc_wrapSelectorWheel" format="boolean"/>
+        <attr name="android:entries" />
     </declare-styleable>
 </resources>

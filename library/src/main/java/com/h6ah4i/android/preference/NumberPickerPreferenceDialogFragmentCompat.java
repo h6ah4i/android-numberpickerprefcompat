@@ -16,11 +16,12 @@
 package com.h6ah4i.android.preference;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceDialogFragmentCompat;
-import android.view.View;
-import android.widget.TextView;
 
 import com.h6ah4i.android.preference.numberpickercompat.R;
 import com.h6ah4i.android.widget.numberpickercompat.NumberPicker;
@@ -71,6 +72,10 @@ public class NumberPickerPreferenceDialogFragmentCompat extends PreferenceDialog
 
         mNumberPicker.setMinValue(getNumberPickerPreference().getMinValue());
         mNumberPicker.setMaxValue(getNumberPickerPreference().getMaxValue());
+        String[] entries = getNumberPickerPreference().getEntries();
+        if (entries != null) {
+            mNumberPicker.setDisplayedValues(entries);
+        }
         mNumberPicker.setValue(mValue);
 
         mNumberPicker.setWrapSelectorWheel(getNumberPickerPreference().getWrapSelectorWheel());
