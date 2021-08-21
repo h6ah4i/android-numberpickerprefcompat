@@ -28,9 +28,10 @@ import androidx.preference.DialogPreference;
 import com.h6ah4i.android.preference.numberpickercompat.R;
 
 public class NumberPickerPreferenceCompat extends DialogPreference {
-    private int mValue = 0;
-    private int mMaxValue = 0;
-    private int mMinValue = 0;
+    private int mValue;
+    private int mMaxValue = Integer.MAX_VALUE;
+    private int mMinValue = Integer.MIN_VALUE;
+    private boolean mValueSet;
     private String mUnitText = null;
     private boolean mWrapSelectorWheel = true;
     private String[] mEntries = null;
@@ -81,19 +82,17 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
      * @param value The value to save
      */
     public void setValue(int value) {
-        if (mValue == value) return;
+        final boolean changed = value != getValue();
 
-        final boolean wasBlocking = shouldDisableDependents();
+        // Always persist/notify the first time.
+        if (changed || !mValueSet) {
+            mValue = value;
+            mValueSet = true;
 
-        mValue = value;
-
-        persistInt(value);
-
-        notifyChanged();
-
-        final boolean isBlocking = shouldDisableDependents();
-        if (isBlocking != wasBlocking) {
-            notifyDependencyChange(isBlocking);
+            persistInt(value);
+            if (changed) {
+                notifyChanged();
+            }
         }
     }
 
@@ -107,6 +106,7 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
     }
 
     public int getMinValue() {
+        if (mMinValue == Integer.MIN_VALUE) return 0;
         return mMinValue;
     }
 
@@ -115,6 +115,7 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
     }
 
     public int getMaxValue() {
+        if (mMaxValue == Integer.MAX_VALUE) return 0;
         return mMaxValue;
     }
 
@@ -149,12 +150,12 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
     @NonNull
     @Override
     protected Object onGetDefaultValue(TypedArray a, int index) {
-        return a.getInt(index, 0);
+        return clamp(a.getInt(index, 0), mMinValue, mMaxValue);
     }
 
     @Override
     protected void onSetInitialValue(Object defaultValue) {
-        setValue(getPersistedInt((defaultValue != null) ? (Integer) defaultValue : 0));
+        setValue(getPersistedInt(clamp(((defaultValue != null) ? (Integer) defaultValue : 0), mMinValue, mMaxValue)));
     }
 
     @Override
@@ -179,6 +180,10 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
         final SavedState myState = (SavedState) state;
         super.onRestoreInstanceState(myState.getSuperState());
         setValue(myState.value);
+    }
+
+    private static int clamp(int value, int min, int max) {
+        return Math.min(Math.max(value, min), max);
     }
 
     private static class SavedState extends BaseSavedState {
