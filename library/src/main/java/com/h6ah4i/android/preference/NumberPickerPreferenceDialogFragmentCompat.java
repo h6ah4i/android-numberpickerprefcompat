@@ -80,7 +80,7 @@ public class NumberPickerPreferenceDialogFragmentCompat extends PreferenceDialog
 
         mNumberPicker.setWrapSelectorWheel(getNumberPickerPreference().getWrapSelectorWheel());
 
-        final String unitText = getNumberPickerPreference().getUnitText();
+        final CharSequence unitText = getNumberPickerPreference().getUnitText();
         if (unitText != null) {
             mUnitTextView.setText(unitText);
         }

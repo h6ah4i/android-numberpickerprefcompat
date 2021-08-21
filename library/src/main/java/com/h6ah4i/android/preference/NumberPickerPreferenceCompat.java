@@ -24,6 +24,7 @@ import android.util.AttributeSet;
 import androidx.annotation.ArrayRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.preference.DialogPreference;
 
 import com.h6ah4i.android.preference.numberpickercompat.R;
@@ -33,7 +34,7 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
     private int mMaxValue = Integer.MAX_VALUE;
     private int mMinValue = Integer.MIN_VALUE;
     private boolean mValueSet;
-    private String mUnitText = null;
+    private CharSequence mUnitText = null;
     private boolean mWrapSelectorWheel = true;
     private CharSequence[] mEntries = null;
 
@@ -141,10 +142,14 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
     }
 
     @Nullable
-    public String getUnitText() { return mUnitText; };
+    public CharSequence getUnitText() { return mUnitText; };
 
-    public void setUnitText(@Nullable String unitText) {
+    public void setUnitText(@Nullable CharSequence unitText) {
         mUnitText = unitText;
+    }
+
+    public void setUnitText(@StringRes int unitTextResId) {
+        setUnitText(getContext().getResources().getText(unitTextResId));
     }
 
     @NonNull
