@@ -1,7 +1,7 @@
 NumberPickerPreferenceCompat
 ===============
 
-An Android's Preference widget which can pick a number using NumberPicker dialog. This library uses a [ported version of NumberPicker widget](https://github.com/h6ah4i/android-numberpickercompat) and [support library's Preference](https://developer.android.com/reference/android/support/v7/preference/Preference.html) class, so it works perfectly on API level 9+.
+An Android's Preference widget which can pick a number using NumberPicker dialog. This library uses the [ported version of NumberPicker widget](https://github.com/h6ah4i/android-numberpickercompat) and the [AndroidX Preference library](https://developer.android.com/reference/androidx/preference/package-summary) which works perfectly on API level 14+.
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.h6ah4i.android.preference/numberpickerprefcompat/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.h6ah4i.android.preference/numberpickerprefcompat)
 
@@ -30,9 +30,13 @@ Getting started
 
 This library is published on Maven Central. Just add these lines to `build.gradle`.
 
-```gradle
+```diff
+repositories {
++     mavenCentral()
+}
+
 dependencies {
-    implementation 'com.h6ah4i.android.preference:numberpickerprefcompat:1.1.0'
++    implementation 'com.h6ah4i.android.preference:numberpickerprefcompat:1.1.0'
 }
 ```
 
@@ -66,13 +70,10 @@ public class MyPreferenceFragment extends PreferenceFragmentCompat {
     private static final String DIALOG_FRAGMENT_TAG =
             "androidx.preference.PreferenceFragment.DIALOG";
 
-    public MyPreferenceFragment() {
-    }
-
     @Override
     public void onDisplayPreferenceDialog(Preference preference) {
         // check if dialog is already showing
-        if (getFragmentManager().findFragmentByTag(DIALOG_FRAGMENT_TAG) != null) {
+        if (getParentFragmentManager().findFragmentByTag(DIALOG_FRAGMENT_TAG) != null) {
             return;
         }
 
@@ -86,7 +87,7 @@ public class MyPreferenceFragment extends PreferenceFragmentCompat {
 
         if (f != null) {
             f.setTargetFragment(this, 0);
-            f.show(getFragmentManager(), DIALOG_FRAGMENT_TAG);
+            f.show(getParentFragmentManager(), DIALOG_FRAGMENT_TAG);
         } else {
             super.onDisplayPreferenceDialog(preference);
         }
