@@ -103,7 +103,7 @@ public class MyPreferenceFragment extends PreferenceFragmentCompat {
 License
 ---
 
-This library is licensed under the [Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+This library is licensed under the [Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 See [`LICENSE`](LICENSE) for full of the license text.
 
