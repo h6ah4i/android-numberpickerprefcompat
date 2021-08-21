@@ -72,9 +72,9 @@ public class NumberPickerPreferenceDialogFragmentCompat extends PreferenceDialog
 
         mNumberPicker.setMinValue(getNumberPickerPreference().getMinValue());
         mNumberPicker.setMaxValue(getNumberPickerPreference().getMaxValue());
-        String[] entries = getNumberPickerPreference().getEntries();
+        CharSequence[] entries = getNumberPickerPreference().getEntries();
         if (entries != null) {
-            mNumberPicker.setDisplayedValues(entries);
+            mNumberPicker.setDisplayedValues(mapToStringArray(entries));
         }
         mNumberPicker.setValue(mValue);
 
@@ -101,5 +101,13 @@ public class NumberPickerPreferenceDialogFragmentCompat extends PreferenceDialog
 
     private NumberPickerPreferenceCompat getNumberPickerPreference() {
         return (NumberPickerPreferenceCompat) getPreference();
+    }
+
+    private static String[] mapToStringArray(CharSequence[] entries) {
+        String[] converted = new String[entries.length];
+        for (int i = 0; i < entries.length; i++) {
+            converted[i] = entries[i].toString();
+        }
+        return converted;
     }
 }

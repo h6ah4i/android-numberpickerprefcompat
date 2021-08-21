@@ -21,6 +21,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 
+import androidx.annotation.ArrayRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.DialogPreference;
@@ -34,7 +35,7 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
     private boolean mValueSet;
     private String mUnitText = null;
     private boolean mWrapSelectorWheel = true;
-    private String[] mEntries = null;
+    private CharSequence[] mEntries = null;
 
     public NumberPickerPreferenceCompat(Context context) {
         super(context);
@@ -64,12 +65,7 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
         mMaxValue = ta.getInt(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_maxValue, mMaxValue);
         mUnitText = ta.getString(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_unitText);
         mWrapSelectorWheel = ta.getBoolean(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_wrapSelectorWheel, true);
-        CharSequence[] entries = ta.getTextArray(R.styleable.nppc_NumberPickerPreferenceCompat_android_entries);
-        if (entries != null) {
-            // Convert CharSequence[] to String[]
-            mEntries = new String[entries.length];
-            for (int i = 0; i < entries.length; i++) mEntries[i] = entries[i].toString();
-        }
+        mEntries = ta.getTextArray(R.styleable.nppc_NumberPickerPreferenceCompat_android_entries);
 
         ta.recycle();
 
@@ -132,12 +128,16 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
     }
 
     @Nullable
-    public String[] getEntries() {
+    public CharSequence[] getEntries() {
         return mEntries;
     }
 
-    public void setEntries(@Nullable String[] entries) {
+    public void setEntries(@Nullable CharSequence[] entries) {
         mEntries = entries;
+    }
+
+    public void setEntries(@ArrayRes int entriesResId) {
+        setEntries(getContext().getResources().getTextArray(entriesResId));
     }
 
     @Nullable
