@@ -6,6 +6,6 @@
 /build
 /captures
 .externalNativeBuild
+/repo
 
 /android-numberpickercompat
-
