@@ -1,6 +1,8 @@
 package com.h6ah4i.android.example.numberpickerpreferencecompat;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.Preference;
@@ -28,17 +30,49 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             addPreferencesFromResource(R.xml.preferences);
-            NumberPickerPreferenceCompat preference = findPreference("number_picker_preference_1");
-            if (preference != null) {
-                // Do this to set the entries programmatically
-                // preference.setEntries(new String[] {"I", "II", "III", "IV", "V"});
-                preference.setSummaryProvider(new Preference.SummaryProvider<NumberPickerPreferenceCompat>() {
-                    @Override
-                    public CharSequence provideSummary(NumberPickerPreferenceCompat preference) {
-                        return "Summary text goes here (value = " + preference.getValue() + " " + preference.getUnitText() + ")";
-                    }
-                });
-            }
+
+            // basic
+            requireNumberPreference("number_picker_preference_1").setSummaryProvider(new Preference.SummaryProvider<NumberPickerPreferenceCompat>() {
+                @Override
+                public CharSequence provideSummary(NumberPickerPreferenceCompat preference) {
+                    return "Summary text goes here (value = " + preference.getValue() + " " + preference.getUnitText() + ")";
+                }
+            });
+
+            // with android:entries
+            requireNumberPreference("number_picker_preference_2").setSummaryProvider(new Preference.SummaryProvider<NumberPickerPreferenceCompat>() {
+                @Override
+                public CharSequence provideSummary(NumberPickerPreferenceCompat preference) {
+                    return "Summary text goes here (value = " + preference.getEntries()[preference.getValue() - preference.getMinValue()] + " " + preference.getUnitText() + ")";
+                }
+            });
+
+            // negative values
+            requireNumberPreference("number_picker_preference_3").setSummaryProvider(new Preference.SummaryProvider<NumberPickerPreferenceCompat>() {
+                @Override
+                public CharSequence provideSummary(NumberPickerPreferenceCompat preference) {
+                    return "Summary text goes here (value = " + preference.getValue() +")";
+                }
+            });
+
+            // configure programmatically
+            NumberPickerPreferenceCompat pref4 = requireNumberPreference("number_picker_preference_4");
+            pref4.setTitle("Configure programmatically");
+            pref4.setDialogTitle("Configure programmatically");
+            pref4.setEntries(new String[]{"foo", "bar", "baz"});
+            pref4.setMinValue(0);
+            pref4.setMaxValue(2);
+            pref4.setSummaryProvider(new Preference.SummaryProvider<NumberPickerPreferenceCompat>() {
+                @Override
+                public CharSequence provideSummary(NumberPickerPreferenceCompat preference) {
+                    return "Summary text goes here (value = " + preference.getEntries()[preference.getValue() - preference.getMinValue()] + ")";
+                }
+            });
+        }
+
+        @NonNull
+        private NumberPickerPreferenceCompat requireNumberPreference(@NonNull CharSequence key) {
+            return (NumberPickerPreferenceCompat) findPreference(key);
         }
 
         @Override

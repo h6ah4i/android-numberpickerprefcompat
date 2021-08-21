@@ -4,13 +4,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
+    <!-- basic example -->
     <com.h6ah4i.android.preference.NumberPickerPreferenceCompat
         android:key="number_picker_preference_1"
         android:summary="Summary text goes here"
-        android:title="Number picker preference"
+        android:title="Basic item"
+        app:nppc_minValue="0"
+        app:nppc_maxValue="100"
+        app:nppc_unitText="[%]" />
+
+    <!-- android:entries -->
+    <com.h6ah4i.android.preference.NumberPickerPreferenceCompat
+        android:key="number_picker_preference_2"
+        android:summary="Summary text goes here"
+        android:title="With entries"
+        android:entries="@array/number_picker_entries"
+        android:defaultValue="1"
         app:nppc_minValue="1"
         app:nppc_maxValue="5"
-        app:nppc_unitText="[cm]"
-        android:entries="@array/number_picker_entries" />
+        app:nppc_unitText="[cm]" />
+
+    <!-- negative values -->
+    <com.h6ah4i.android.preference.NumberPickerPreferenceCompat
+        android:key="number_picker_preference_3"
+        android:summary="Summary text goes here"
+        android:title="Negative values"
+        android:defaultValue="0"
+        app:nppc_minValue="-100"
+        app:nppc_maxValue="100" />
+
+    <!-- configure programmatically -->
+    <com.h6ah4i.android.preference.NumberPickerPreferenceCompat
+        android:key="number_picker_preference_4" />
 
 </PreferenceScreen>
