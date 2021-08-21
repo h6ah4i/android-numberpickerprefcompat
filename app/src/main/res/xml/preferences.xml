@@ -13,13 +13,14 @@
         app:nppc_maxValue="100"
         app:nppc_unitText="[%]" />
 
-    <!-- android:entries -->
+    <!-- android:entries and wrapSelectorWheel="false" -->
     <com.h6ah4i.android.preference.NumberPickerPreferenceCompat
         android:key="number_picker_preference_2"
         android:summary="Summary text goes here"
         android:title="With entries"
         android:entries="@array/number_picker_entries"
         android:defaultValue="1"
+        app:nppc_wrapSelectorWheel="false"
         app:nppc_minValue="1"
         app:nppc_maxValue="5"
         app:nppc_unitText="[cm]" />
