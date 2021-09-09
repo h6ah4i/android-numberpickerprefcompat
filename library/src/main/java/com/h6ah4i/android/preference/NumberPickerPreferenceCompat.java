@@ -155,7 +155,7 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
     @NonNull
     @Override
     protected Object onGetDefaultValue(TypedArray a, int index) {
-        return clamp(a.getInt(index, 0), mMinValue, mMaxValue);
+        return a.getInt(index, 0);
     }
 
     @Override
