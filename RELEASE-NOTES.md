@@ -1,3 +1,7 @@
+## 1.2.1
+- Fix default value not used bug (issue #5)
+- Remove AppCompat dependency (issue #4)
+
 ## 1.2.0
 - Add `android:entries` attribute and `setEntries()` (PR #3)
 - Add negative values support
