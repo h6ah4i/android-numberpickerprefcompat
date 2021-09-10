@@ -47,14 +47,13 @@ Usage
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <com.h6ah4i.android.preference.NumberPickerPreferenceCompat
-        android:key="number_picker_preference_1"
-        android:summary="Summary text goes here"
-        android:title="Number picker preference"
+        app:key="number_picker_preference_1"
+        app:summary="Summary text goes here"
+        app:title="Number picker preference"
         app:nppc_maxValue="100"
         app:nppc_minValue="0"
         app:nppc_unitText="%"
