@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- basic example -->
     <com.h6ah4i.android.preference.NumberPickerPreferenceCompat
-        android:key="number_picker_preference_1"
-        android:summary="Summary text goes here"
-        android:title="Basic item"
+        app:key="number_picker_preference_1"
+        app:summary="Summary text goes here"
+        app:title="Basic item"
         app:nppc_minValue="0"
         app:nppc_maxValue="100"
         app:nppc_unitText="[%]" />
 
-    <!-- android:entries and wrapSelectorWheel="false" -->
+    <!-- app:entries and wrapSelectorWheel="false" -->
     <com.h6ah4i.android.preference.NumberPickerPreferenceCompat
-        android:key="number_picker_preference_2"
-        android:summary="Summary text goes here"
-        android:title="With entries"
-        android:entries="@array/number_picker_entries"
-        android:defaultValue="1"
+        app:key="number_picker_preference_2"
+        app:summary="Summary text goes here"
+        app:title="With entries"
+        app:entries="@array/number_picker_entries"
+        app:defaultValue="1"
         app:nppc_wrapSelectorWheel="false"
         app:nppc_minValue="1"
         app:nppc_maxValue="5"
@@ -27,15 +24,15 @@
 
     <!-- negative values -->
     <com.h6ah4i.android.preference.NumberPickerPreferenceCompat
-        android:key="number_picker_preference_3"
-        android:summary="Summary text goes here"
-        android:title="Negative values"
-        android:defaultValue="0"
+        app:key="number_picker_preference_3"
+        app:summary="Summary text goes here"
+        app:title="Negative values"
+        app:defaultValue="0"
         app:nppc_minValue="-100"
         app:nppc_maxValue="100" />
 
     <!-- configure programmatically -->
     <com.h6ah4i.android.preference.NumberPickerPreferenceCompat
-        android:key="number_picker_preference_4" />
+        app:key="number_picker_preference_4" />
 
 </PreferenceScreen>
