@@ -66,7 +66,10 @@ public class NumberPickerPreferenceCompat extends DialogPreference {
         mMaxValue = ta.getInt(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_maxValue, mMaxValue);
         mUnitText = ta.getString(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_unitText);
         mWrapSelectorWheel = ta.getBoolean(R.styleable.nppc_NumberPickerPreferenceCompat_nppc_wrapSelectorWheel, true);
-        mEntries = ta.getTextArray(R.styleable.nppc_NumberPickerPreferenceCompat_android_entries);
+        mEntries = ta.getTextArray(R.styleable.nppc_NumberPickerPreferenceCompat_entries);
+        if (mEntries == null) {
+            mEntries = ta.getTextArray(R.styleable.nppc_NumberPickerPreferenceCompat_android_entries);
+        }
 
         ta.recycle();
 

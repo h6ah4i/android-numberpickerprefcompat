@@ -14,12 +14,13 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <declare-styleable name="nppc_NumberPickerPreferenceCompat">
         <attr name="nppc_minValue" format="integer"/>
         <attr name="nppc_maxValue" format="integer"/>
         <attr name="nppc_unitText" format="string|reference" />
         <attr name="nppc_wrapSelectorWheel" format="boolean"/>
+        <attr name="entries" format="reference" tools:ignore="ResourceName" />
         <attr name="android:entries" />
     </declare-styleable>
 </resources>
