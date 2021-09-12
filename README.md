@@ -23,7 +23,7 @@ Target platforms
 Latest version
 ---
 
-- Version 1.2.1  (September 9, 2021)   ([RELEASE NOTES](./RELEASE-NOTES.md))
+- Version 1.2.2  (September 12, 2021)   ([RELEASE NOTES](./RELEASE-NOTES.md))
 
 Getting started
 ---
@@ -36,7 +36,7 @@ repositories {
 }
 
 dependencies {
-+    implementation 'com.h6ah4i.android.preference:numberpickerprefcompat:1.2.1'
++    implementation 'com.h6ah4i.android.preference:numberpickerprefcompat:1.2.2'
 }
 ```
 

@@ -1,3 +1,9 @@
+## 1.2.2
+- Enable transitive dependency to `numberpickercompat` and `preference` modules (issue #4)
+- Bump `nubmerpickercompat` to v1.1.3
+- Drop extra dependency with `kotlin-stdlib`
+- Add `app:entries` attribute support (`android:entries` still works)
+
 ## 1.2.1
 - Fix default value not used bug (issue #5)
 - Remove AppCompat dependency (issue #4)
